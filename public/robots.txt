@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Optional: Add a slight delay to avoid server overload (ignored by Google)
+Crawl-delay: 10
+
+# Sitemap location
+Sitemap: https://foxmarketingsystems.com/sitemap.xml
