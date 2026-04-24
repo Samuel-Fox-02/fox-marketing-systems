@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import { getPostBySlug } from '../utils/blog';
 import Button from '../components/ui/Button';
+import SEO from '../components/ui/SEO'
 
 // Import highlight.js styles for code blocks (you'll need to install 'highlight.js' or choose a theme)
 import 'highlight.js/styles/github-dark.css';

@@ -2,6 +2,7 @@ import Hero from '../components/sections/Hero';
 import ServicesPackages from '../components/sections/ServicesPackages';
 import ProcessShowcase from '../components/sections/ProcessShowcase';
 import BlogPreview from '../components/sections/BlogPreview';
+import SEO from '../components/ui/SEO'
 // import LeadMagnet from '../components/sections/LeadMagnet'; // Removed for now
 
 const Home = () => {

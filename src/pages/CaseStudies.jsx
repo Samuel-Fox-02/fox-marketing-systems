@@ -3,6 +3,7 @@ import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import SEO from '../components/ui/SEO'
 
 const CaseStudies = () => {
   const [activeTab, setActiveTab] = useState('ecommerce');

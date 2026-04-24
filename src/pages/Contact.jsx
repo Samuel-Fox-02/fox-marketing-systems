@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Button from '../components/ui/Button';
 import SectionTitle from '../components/ui/SectionTitle';
+import SEO from '../components/ui/SEO'
 
 const Contact = () => {
   const form = useRef();

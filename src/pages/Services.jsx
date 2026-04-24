@@ -3,6 +3,7 @@ import SectionTitle from '../components/ui/SectionTitle';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import { Link } from 'react-router-dom';
+import SEO from '../components/ui/SEO'
 
 const Services = () => {
   const [activeNiche, setActiveNiche] = useState('ecommerce');

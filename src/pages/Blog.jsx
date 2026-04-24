@@ -4,6 +4,7 @@ import { getAllPosts } from '../utils/blog';
 import SectionTitle from '../components/ui/SectionTitle';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
+import SEO from '../components/ui/SEO'
 
 const Blog = () => {
   const [posts, setPosts] = useState([]);
