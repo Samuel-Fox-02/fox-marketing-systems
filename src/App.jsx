@@ -10,7 +10,6 @@ import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
 import ThankYou from './pages/ThankYou'
 import Results from './pages/Results'
-import Credentials from './pages/Credentials'
 import NotFound from './pages/NotFound'
 import './App.css'
 
@@ -27,7 +26,6 @@ function App() {
           <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/results" element={<Results />} />
-          <Route path="/credentials" element={<Credentials />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <BackToTop />
