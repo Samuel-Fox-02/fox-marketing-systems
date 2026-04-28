@@ -9,15 +9,13 @@ const NewsletterSignup = () => {
     e.preventDefault()
     setStatus('loading')
 
-    // Replace with your ConvertKit/MailerLite form endpoint
-    const endpoint =
-      'https://app.convertkit.com/forms/YOUR_FORM_ID/subscriptions'
-    const data = new FormData()
-    data.append('email_address', email)
-    data.append('api_key', 'YOUR_API_KEY') // optional, depends on service
-
     try {
-      const res = await fetch(endpoint, { method: 'POST', body: data })
+      const res = await fetch('/api/klaviyo-subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+
       if (res.ok) {
         setStatus('success')
         setEmail('')
