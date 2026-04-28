@@ -1,102 +1,62 @@
-/* cSpell:disable */
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' })
-  }
+import { useState } from 'react'
 
-  const { email } = req.body
-  if (!email) {
-    return res.status(400).json({ error: 'Email is required' })
-  }
+const NewsletterSignup = () => {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [message, setMessage] = useState('')
 
-  try {
-    // eslint-disable-next-line no-undef
-    const listId = process.env.KLAVIYO_LIST_ID
-    // eslint-disable-next-line no-undef
-    const privateKey = process.env.KLAVIYO_PRIVATE_KEY
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus('loading')
 
-    // 1. Create profile and subscribe to list
-    const profileRes = await fetch('https://a.klaviyo.com/api/profiles/', {
-      method: 'POST',
-      headers: {
-        Authorization: `Klaviyo-API-Key ${privateKey}`,
-        accept: 'application/vnd.api+json',
-        'content-type': 'application/vnd.api+json',
-        revision: '2025-01-15',
-      },
-      body: JSON.stringify({
-        data: {
-          type: 'profile',
-          attributes: {
-            email: email,
-            subscriptions: {
-              email: {
-                marketing: {
-                  consent: 'SUBSCRIBED',
-                  method: 'single_opt_in',
-                  method_detail: 'website-footer',
-                },
-              },
-            },
-          },
-          relationships: {
-            lists: {
-              data: [{ type: 'list', id: listId }],
-            },
-          },
-        },
-      }),
-    })
-
-    const profileData = await profileRes.json()
-
-    if (!profileRes.ok) {
-      // Return Klaviyo error for debugging
-      return res.status(profileRes.status).json({ error: profileData })
-    }
-
-    // 2. Get the newly created profile ID
-    const profileId = profileData?.data?.id
-    if (!profileId) {
-      return res
-        .status(500)
-        .json({ error: 'Profile created but ID not returned' })
-    }
-
-    // 3. Add the tag as a relationship
-    const tagRes = await fetch(
-      `https://a.klaviyo.com/api/profiles/${profileId}/relationships/tags/`,
-      {
+    try {
+      const res = await fetch('/api/klaviyo-subscribe', {
         method: 'POST',
-        headers: {
-          Authorization: `Klaviyo-API-Key ${privateKey}`,
-          accept: 'application/vnd.api+json',
-          'content-type': 'application/vnd.api+json',
-          revision: '2025-01-15',
-        },
-        body: JSON.stringify({
-          data: [
-            {
-              type: 'tag',
-              id: 'website-footer-signup', // Klaviyo auto‑creates the tag if it doesn't exist
-            },
-          ],
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+
+      if (res.ok) {
+        setStatus('success')
+        setEmail('')
+        setMessage('Thanks! Check your inbox.')
+      } else {
+        setStatus('error')
+        setMessage('Something went wrong. Try again later.')
       }
-    )
-
-    if (tagRes.status === 201 || tagRes.status === 200) {
-      // Tag added successfully
-      return res.status(200).json({ success: true })
+    } catch {
+      setStatus('error')
+      setMessage('Network error. Please try again.')
     }
-
-    // Tag failed but profile is subscribed – still return success (you can log the error)
-    const tagError = await tagRes.text()
-    console.error('Tag addition failed:', tagError)
-    return res
-      .status(200)
-      .json({ success: true, tagWarning: 'Tag could not be added' })
-  } catch {
-    return res.status(500).json({ error: 'Internal server error' })
   }
+
+  return (
+    <div className="newsletter-signup">
+      {status === 'success' ? (
+        <p className="newsletter-success">{message}</p>
+      ) : (
+        <form onSubmit={handleSubmit} className="newsletter-form">
+          <input
+            type="email"
+            placeholder="Your email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            disabled={status === 'loading'}
+            className="newsletter-input"
+          />
+          <button
+            type="submit"
+            className="btn newsletter-btn"
+            disabled={status === 'loading'}
+          >
+            {status === 'loading' ? 'Sending…' : 'Stay in the loop'}
+          </button>
+          {status === 'error' && <p className="newsletter-error">{message}</p>}
+        </form>
+      )}
+    </div>
+  )
 }
+
+export default NewsletterSignup
