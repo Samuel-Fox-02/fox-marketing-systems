@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { MailIcon, PinIcon } from './Icons'
-import NewsletterSignup from './NewsletterSignup'
+import NewsletterSignup from './NewsletterSignup' // ✅ import
 
 const Footer = () => {
   return (
@@ -17,6 +17,7 @@ const Footer = () => {
           <p className="footer-tagline">
             Helping agents close more with conversations, not blasts.
           </p>
+          {/* ✅ Newsletter form */}
           <NewsletterSignup />
         </div>
 
