@@ -624,27 +624,45 @@ h3 {
   margin-bottom: 1.5rem;
 }
 
-/* Final CTA */
-.final-cta {
-  background-color: var(--final-cta-bg);
+/* Light final CTA – breaks the dark block before footer */
+.final-cta-light {
+  background-color: #F3F3F3;          /* Off White, warm and airy */
   text-align: left;
   padding: 8rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);  /* subtle separator */
 }
 
-.final-cta .container {
+.final-cta-light .container {
   max-width: 720px;
 }
 
-.final-cta h2 {
+.final-cta-light h2 {
   font-size: 2.8rem;
-  color: var(--final-cta-heading);
+  color: var(--ink);
   margin-bottom: 1.5rem;
 }
 
-.final-cta .body-large {
-  color: var(--final-cta-text);
+.final-cta-light .body-large {
+  color: var(--graphite);
   margin-bottom: 2.5rem;
   font-size: 1.1rem;
+}
+
+.contact-email-light {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--graphite);
+}
+
+.contact-email-light a {
+  color: var(--fox-orange);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition);
+}
+
+.contact-email-light a:hover {
+  border-bottom-color: var(--fox-orange);
 }
 
 .contact-email {

@@ -214,8 +214,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="final-cta">
+      {/* Final CTA – light background */}
+      <section className="final-cta-light">
         <div className="container">
           <p className="eyebrow">Ready to grow?</p>
           <h2>Let’s build your campaign.</h2>
@@ -226,7 +226,7 @@ const Home = () => {
           <Link to="/contact" className="btn">
             Book Your Call
           </Link>
-          <p className="contact-email">
+          <p className="contact-email-light">
             Prefer email?{' '}
             <a href="mailto:samuel@foxmarketingsystems.com">
               samuel@foxmarketingsystems.com
