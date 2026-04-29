@@ -1,7 +1,7 @@
 const NewsletterSignup = () => {
   return (
     <div className="newsletter-signup">
-      <div className="klaviyo-form-S6tB46"></div>
+      <div className="klaviyo-form-R9e2uB"></div>
     </div>
   )
 }
