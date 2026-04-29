@@ -154,7 +154,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Case Studies (placeholder images) */}
+      {/* Case Studies (real links) */}
       <section className="case-studies section-padding" id="work">
         <div className="container">
           <p className="eyebrow">Recent Work</p>
@@ -171,15 +171,15 @@ const Home = () => {
                 <p className="eyebrow">Case Study</p>
                 <h3>176% more opens</h3>
                 <p>Luxury condo specialist revamped their nurture sequence.</p>
-                <a href="#" className="text-link">
+                <Link to="/case-studies/luxury-email" className="text-link">
                   Read the case
-                </a>
+                </Link>
               </div>
             </div>
             <div className="case-card">
               <div className="case-image">
                 <img
-                  src="https://images.unsplash.com/photo-1564013799919-ab600027f53e?w=800&h=600&fit=crop"
+                  src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="Modern home exterior"
                   loading="lazy"
                 />
@@ -188,15 +188,15 @@ const Home = () => {
                 <p className="eyebrow">Case Study</p>
                 <h3>3× listing inquiries</h3>
                 <p>How a boutique brokerage turned old leads into showings.</p>
-                <a href="#" className="text-link">
+                <Link to="/case-studies/boutique-sms" className="text-link">
                   Read the case
-                </a>
+                </Link>
               </div>
             </div>
             <div className="case-card">
               <div className="case-image">
                 <img
-                  src="https://images.unsplash.com/photo-1556912172-45b7abe8b6e0?w=800&h=600&fit=crop"
+                  src="https://images.unsplash.com/photo-1618765142664-4a6b896670bb?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="Open kitchen"
                   loading="lazy"
                 />
@@ -205,16 +205,19 @@ const Home = () => {
                 <p className="eyebrow">Case Study</p>
                 <h3>Closed in 30 days</h3>
                 <p>Automated follow‑up that won a $2.1M deal.</p>
-                <a href="#" className="text-link">
+                <Link
+                  to="/case-studies/automated-follow-up"
+                  className="text-link"
+                >
                   Read the case
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA – light background */}
+      {/* Final CTA – light background to avoid dark block */}
       <section className="final-cta-light">
         <div className="container">
           <p className="eyebrow">Ready to grow?</p>
